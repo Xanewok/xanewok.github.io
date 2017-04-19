@@ -1,30 +1,12 @@
 ---
-layout: page
+layout: about
 title: About
 ---
+I'm Igor Matuszewski and I'm a software developer focused on video game programming.
+Currently a student at University of Warsaw, Faculty of Mathematics, Informatics and Mechanics.
+<br>Proud student for Google Summer of Code 2017, where I'm contributing to the [Rust Language Server](https://github.com/rust-lang-nursery/rls) project.
 
-<p class="message">
-  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
-</p>
+### Games
 
-In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
-
-There are currently two themes built on Poole:
-
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
-
-Learn more and contribute on [GitHub](https://github.com/poole).
-
-## Setup
-
-Some fun facts about the setup of this project include:
-
-* Built for [Jekyll](http://jekyllrb.com)
-* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
-* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
-* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
-
-Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
-
-Thanks for reading!
+Responsible for all sorts of nefarious bugs in [Sniper Ghost Warrior 3](http://sniperghostwarrior3.com/), especially the save system, while I was working at [CI Games](http://cigames.com).
+<br> Additionally created few small games in Unity3D, mostly for student assignments.
