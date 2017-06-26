@@ -3,7 +3,7 @@ layout: post
 title: Working on Rust Language Server for GSoC 2017
 ---
 ## Introduction
-This year's edition of Google Summer of Code has begun on May 30th and I managed to enroll as a student! This means I'll the spend summer hacking away at Rust Language Server.
+This year's edition of Google Summer of Code has begun on May 30th and I managed to enroll as a student! This means I'll spend the summer hacking away at Rust Language Server.
 <br>Having finally taken care of my exams I now have managed to find some time to write a blog post about my work. This post will mark a series of posts about my experiences with GSoC, open source development and working on RLS, specifically. I hope it'll prove interesting and provide some insight on how such work may look like.
 
 ## The project
