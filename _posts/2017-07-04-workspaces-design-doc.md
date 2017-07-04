@@ -6,8 +6,8 @@ title: Workspaces - design doc
 A *workspace* is a set of packages that all share the same *Cargo.lock* and output directory. It can also define its own package. Workspaces cannot be nested and each member package can have only one direct parent workspace, prioritizing closest one up.
 
 # Design Proposal/Rationale
-In addition to current, single crate mode, this introduces a separate **workspace mode**.
-New behaviour will at first be opt-in, to isolate experimental work and make sure this will not introduce any regression to the current behaviour.
+In addition to current, single crate mode, this introduces a separate **workspace mode**.<br>
+New behaviour will at first be opt-in, to isolate experimental work and make sure this will not introduce any regression to the current behaviour.<br>
 Initially the priority is to implement actual support for workspaces and lay foundation for easier future improvements. This will be done by off-loading all build work to Cargo, specifically workspace discovery, generating dependency graph and coordinating crate compilation with diagnostics. Then the prototype will be improved in an incremental manner, providing a good baseline for regression testing.
 
 ## Settings
@@ -64,7 +64,7 @@ In general, majority of tools, which LSP was designed in mind with, prioritize c
 * Relying solely on client notifications means shifting the burden of understanding workspaces and relevant files to multiple, different client implementations
 * External changes made outside the LSP workspace affecting it (e.g. in scope of Rust workspace, when client is initialized in a member directory) will probably not be detected, even if the protocol were to be further specified to allow for watching files specifically inside the workspace
 
-This means that a reasonable and fairly future-proof solution would be to implement file watching within RLS itself.
+This means that a reasonable and fairly future-proof solution would be to implement file watching within RLS itself.<br>
 Another very important reason to have that is when files are added/changed/removed. Those changes are vital in how the project is eventually laid out and compiled, so it's essential to implement that, more so when an LSP client is incapable of file watching in general.
 
 The only bit to watch out for are future changes to the semantics of workspace in which LSP server is initialized. If the protocol was to constrain file operation/notification to workspace under `rootUri`, then the possible tracking of relevant files outside the specified workspace will not be permitted. In this specific case initializing client to a member directory inside would also not be permitted and RLS should present a warning to the user and disallow it.
@@ -81,7 +81,7 @@ Even if it was easily possible to map currently opened files to the ones on disk
 
 # Proposed course of action
 #### Prototype
-To achieve a sufficiently working prototype, for every previous design proposal section, initial proposed change will be implemented at first.
+To achieve a sufficiently working prototype, for every previous design proposal section, initial proposed change will be implemented at first.<br>
 At the very least appropriate settings in rls.toml will be implemented and behaviour split between current mode and workspace mode. In the latter, RLS will try to run `cargo` with linked compiler, collecting diagnostics and analysis data for relevant crates in the workspace and finally updating it and publishing diagnostics as the last step. This also assumes correct detecting of the workspace and setting `build_dir` appropriately, along with `cwd` for Cargo config.
 
 Next step would be to adapt Vfs to work with Cargo, which means modifying Cargo itself and figuring a way to elegantly weave in the virtual in-memory registry API. This seems like a good thing to do second, since keeping modified files open in the editor is a common scenario and Cargo/build routine should be aware of that to improve consistency and quality of life.
