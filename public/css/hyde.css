@@ -125,11 +125,15 @@ a.sidebar-nav-item:focus {
   margin: 0;
   height: 32px;
   width: 32px;
-  transition: opacity .4s ease;
+  transition: opacity .3s ease;
 }
 
 .sidebar-nav-icons img:hover {
   opacity: 0.35;
+}
+
+.sidebar-nav-icons img:active {
+  opacity: 0.25;
 }
 
 /* Sticky sidebar
