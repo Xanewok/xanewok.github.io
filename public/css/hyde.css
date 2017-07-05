@@ -106,6 +106,7 @@ a.sidebar-nav-item:focus {
   display: inline-flex;
 }
 
+
 .sidebar-nav-icons a {
   margin: 0.2em;
   display: inline-flex;
@@ -124,6 +125,11 @@ a.sidebar-nav-item:focus {
   margin: 0;
   height: 32px;
   width: 32px;
+  transition: opacity .4s ease;
+}
+
+.sidebar-nav-icons img:hover {
+  opacity: 0.35;
 }
 
 /* Sticky sidebar
