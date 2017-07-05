@@ -4,7 +4,7 @@ title: Modular approach of RLS
 ---
 
 ### Previously
-As I mentioned [earlier]({% post_url 2017-06-24-working-on-rust-language-server-for-gsoc-2017 %}) (TODO: update previous post)...
+As I mentioned earlier (TODO: update previous post)...
 
 Traditionally IDEs were heavily integrating their own custom set of tools. Most of the time this meant having its own custom implementation of the compiler and build system.
 ### Reimplementation
