@@ -1,5 +1,6 @@
 ---
 layout: post
+categories: [Rust, GSoC]
 title: Working on Rust Language Server for GSoC 2017
 ---
 ## Introduction
