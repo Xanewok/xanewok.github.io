@@ -100,6 +100,32 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
+/* social link icons */
+.sidebar-nav-icons {
+  margin-top: 0.25em;
+  display: inline-flex;
+}
+
+.sidebar-nav-icons a {
+  margin: 0.2em;
+  display: inline-flex;
+}
+
+.sidebar-nav-icons a:first-child {
+  margin-left: 0em;
+}
+
+.sidebar-nav-icons a:last-child {
+  margin-right: 0em;
+}
+
+/* Override poole margin for images */
+.sidebar-nav-icons img {
+  margin: 0;
+  height: 32px;
+  width: 32px;
+}
+
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the
