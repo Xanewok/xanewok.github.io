@@ -38,10 +38,9 @@ RLS mostly coordinates the build process with the help of Cargo, and manages ana
 Finally, LSP is used for communication between the RLS and a language server client, and the latter is responsible for forwarding requests made by the user, as well as getting the information back, in the editor.
 
 ## Planned work and beyond
-As I mentioned earlier, there's a variety of stuff that can be done for the RLS. My main focus will be on extending the integration with Cargo, specifically supporting project workspaces, which are used for managing bigger projects consisting of multiple packages. Bigger projects are where IDEs shine brightest, so bringing support for that would mean a considerable leap in terms of usability for the RLS. 
+As I mentioned earlier, there's a variety of stuff that can be done for the RLS. My main focus will be on extending the integration with Cargo, specifically supporting project workspaces, which are used for managing bigger projects consisting of multiple packages. Bigger projects are where IDEs shine brightest, so bringing support for that would mean a considerable leap in terms of usability for the RLS. One useful feature that is already implemented is the ability to specify for which target the analysis data should be provided (using `--bin <target>`, specifically). This should prove helpful for people working on packages that have different possible executable targets.
 
 Having done that, I'd like to improve the ergonomics and user-facing part in general. An exciting feature to add would be macro expansion previewable in the editor.
-One useful feature that is already implemented is the ability to specify for which target the analysis data should be provided. This should prove helpful for people working on packages that have different possible executable targets.
 
 All in all, I'm very excited to be working on this project. It's a great opportunity to learn more about inner workings of Rust and IDEs in general, and to do something usable by others. I always felt that Rust lacks much needed IDE support, so now's my chance to change that.
 More to come, stay tuned.
