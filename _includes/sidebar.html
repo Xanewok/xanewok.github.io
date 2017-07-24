@@ -2,7 +2,7 @@
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <h1>
-        <a href="{{ site.baseurl }}">
+        <a href="{{ "" | absolute_url }}">
           {{ site.title }}
         </a>
       </h1>
@@ -28,10 +28,10 @@
 
       <div class="sidebar-nav-icons">
         <a href="https://github.com/Xanewok">
-          <img src="{{ site.baseurl }}public/github-64px.png"  alt="GitHub"></img>
+	  <img src="{{ "/public/github-64px.png" | absolute_url }}" alt="GitHub"></img>
         </a>
         <a href="https://www.linkedin.com/in/igor-matuszewski-417899109/">
-          <img src="{{ site.baseurl }}public/linkedin-64px.png" alt="LinkedIn"></img>
+	  <img src="{{ "/public/linkedin-64px.png" | absolute_url }}" alt="LinkedIn"></img>
         </a>
       </div>
     </nav>
