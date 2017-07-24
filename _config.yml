@@ -8,7 +8,6 @@ permalink:        /:categories/:year/:title/
 # Setup
 title:            Igor Matuszewski
 description:      Through game programming and more
-baseurl:          '/'
 
 paginate: 5
 
