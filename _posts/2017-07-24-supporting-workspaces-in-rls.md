@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 'Draft: Supporting workspaces in RLS'
-category: draft
+title: 'Supporting workspaces in RLS'
+category: GSoC
 ---
 One of the main goals for my GSoC project is to increase the usability of the RLS and the range of projects it supports. As I mentioned in the [previous]({% post_url 2017-07-06-working-on-rust-language-server-for-gsoc-2017 %}) post, I managed to implement support for a common project layout, which is a single package split into library and a binary that uses it, however there still remains a larger goal in sight: multiple packages and with it, Cargo workspaces.
 
@@ -22,7 +22,7 @@ That is why the work on supporting multiple active packages will be done in an i
 2. From there we can use Cargo only for build coordination and run linked `rustc` compiler instead of the Cargo one. Thanks to this, the RLS will be able to provide more accurate analysis on the fly by feeding in-memory file buffer contents to the compiler, as well as fetching analysis data directly from memory instead of serializing and reading it from file.
 3. Finally, RLS will coordinate builds on its own, at first using the dependency graph from Cargo. By doing so, it stops being directly dependent on Cargo and can be further extended to work with other build systems. Additionally, build queue and management can be more fine-grained, leaving room for more optimizations and reducing analysis latency.
 
-Supporting custom build systems later on could probably be done by consuming some sort of a build plan in a standard format (support for Cargo emitting one is already [planned](https://github.com/rust-lang/cargo/issues/3815)), but that is probably outside the scope of the current project given time constraints. 
+Supporting custom build systems later on could probably be done by consuming some sort of a build plan in a standard format (support for Cargo emitting one is already [planned](https://github.com/rust-lang/cargo/issues/3815)), but that is probably outside the scope of the current project given time constraints.
 
 ## And now the details
 After specifying a high-level plan, it's time to delve into more details. These are not strictly tied to a certain step in the plan and mostly explain some design motivations and various caveats involved.
@@ -41,7 +41,7 @@ Nevertheless, it's best to profile first to measure the performance for both sce
 #### Files
 Since we do not generate the dependency graph ourselves, we need to rebuild it via Cargo when a source file is added or deleted, or when a Cargo.toml file is modified. Moving files around, as well as modifying Cargo.toml, can change the workspace structure or even implicit targets (e.g. `src/main.rs` or `src/lib.rs`) and that's why the graph has to be rebuilt to avoid stale data. Once it's regenerated, RLS can continue as usual.
 
-Cargo relies on the notion of registries and hash fingerprints to determine whether a package needs rebuilding. However, when files are modified in-editor, there are no changes on disk and so Cargo can't know that a certain package needs rebuilding. While RLS does provide a virtual file loader facility for the linked compiler, package freshness is checked by Cargo before the compiler has a chance to run. Providing and injecting our own virtual registry only to fake fingerprints, as well as modifying Cargo API only for RLS' purposes, seems a bit to extreme, however once RLS has a dependency graph itself the problem effectively solves itself. With that, it won't rely on Cargo to do the compilation and coordination anymore and it can already run the compiler itself with the virtual file system to provide the modified source files.
+Cargo relies on the notion of registries and hash fingerprints to determine whether a package needs rebuilding. However, when files are modified in-editor, there are no changes on disk and so Cargo can't know that a certain package needs rebuilding. While RLS does provide a virtual file loader facility for the linked compiler, package freshness is checked by Cargo before the compiler has a chance to run. Providing and injecting our own virtual registry only to fake fingerprints, as well as modifying Cargo API only for RLS' purposes, seems a bit too extreme, however once RLS has a dependency graph itself the problem effectively solves itself. With that, it won't rely on Cargo to do the compilation and coordination anymore and it can already run the compiler itself with the virtual file system to provide the modified source files.
 
 One more thing to add is that LSP servers aren't explicitly forbidden to perform disk I/O or watch the files themselves, however the protocol provides a `workspace/didChangeWatchedFiles` notification for whenever a file watched by the client changes and seems that watching on the client side is preferred, as per [this discussion](https://github.com/Microsoft/language-server-protocol/issues/237). With this, RLS won't (nor probably it should) do the file watching itself and will rely on the protocol messages instead.
 
