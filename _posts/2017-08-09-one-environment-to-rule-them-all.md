@@ -1,9 +1,9 @@
 ---
 layout: post
 title: One environment to rule them all
-category: draft
+category: GSoC
 ---
-Environment variables are a set of values that can alter the way a process works. They are a part of the environment in which a process runs and as such, the environment can be globally access throughout its execution. Cargo and `rustc` are not an exception, and make a [heavy use](https://github.com/rust-lang/cargo/blob/master/src/doc/environment-variables.md) of it to drive the compilation process or pass additional configuration to the runtime (e.g. via `RUST_BACKTRACE`). Since RLS uses both to perform its analysis build, it must pass an appropriate environment variables to them, the one they would normally expect. However, since these programs are ran in the RLS process rather than in their own, we can cause environment-related race conditions.
+Environment variables are a set of values that can alter the way a process works. They are a part of the environment in which a process runs and as such, the environment can be globally accessed throughout its execution. Cargo and `rustc` are not an exception, and make a [heavy use](https://github.com/rust-lang/cargo/blob/master/src/doc/environment-variables.md) of it to drive the compilation process or pass additional configuration to the runtime (e.g. via `RUST_BACKTRACE`). Since RLS uses both to perform its analysis build, it must pass appropriate environment variables to them. However, since these programs are run in the RLS process rather than in their own, we can cause environment-related race conditions.
 
 One example would be when compiling two packages in parallel. Both compilations would start and an appropriate environment would be set twice. However, since the compilations would share the same process, second compilation would overwrite the environment and introduce invalid data for the first one. Because of that, we must guard the environment and provide a mutually exclusive access to it for programs that normally rely on it and which the RLS uses.
 
