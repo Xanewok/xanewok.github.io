@@ -45,7 +45,6 @@ built for the packages in the project.
 
 ### Examples?
 
-*TODO with internet access*
 
 ###### Footnotes
 Exact `cargo metadata` JSON schema is defined over at [doc.crates.io](http://doc.crates.io/external-tools.html#information-about-project-structure).
