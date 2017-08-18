@@ -14,6 +14,11 @@ multiple package targets and packages in general, including Cargo workspaces.
 Another one, a stretch goal of sorts, was to implement previewing macro expansion
 in the editor, however, in the end, there was not enough time to pursue that.
 
+At the time of writing, 2 out of 3 stages of workspace support has been implemented,
+I managed to land [27 PRs](#most-notable-prs), push
+46 commits (<span style="color:green">+2,637</span> insertions and
+<span style="color:red">-1,139</span> deletions) in total.
+
 ### Work done for multiple packages and package targets
 For supporting multiple crate targets, one of the most useful implemented features
 is ability to specify which target (`[lib]` or which `[[bin]]`) should be analyzed
@@ -27,22 +32,20 @@ data from the compiler for all the packages inside (assuming files are saved on
 the disk), if a specific package hasn't been explicitly specified by the user
 via the `analyze_package` option.
 
-The work for workspace support was split into 3 stages.
-
-First one was to introduce
+The work for workspace support was split into 3 stages:
+1. First one was to introduce
 a new, separate mode, under which the RLS would not crash and provide very basic
 diagnostics.
-<br>Second one was to improve both the performance and support by executing
+2. Second one was to improve both the performance and support by executing
 the linked compiler and gathering diagnostics and analysis data, which drives the IDE
 features such as goto def, from every package in the workspace.
-<br>Third one, the biggest,
+3. Third one, the biggest,
 was to create and store a dependency graph of units of work (compiler calls), which
 would allow to improve the latency of the analysis and provide support for in-memory
 modified files.
 
-At the time of writing, the two first stages are completed with the third stage
-still being actively worked on. I managed to land 27 PRs, push 44 *(?)* commits (totaling
-*(green)* +? insertions and *(red)* -? deletions) in total.
+Currently, the two first stages are completed, with the third stage still being actively
+worked on.
 
 ### Difficulties
 One of the things I struggled the most with was giving correct estimates for the work
@@ -63,7 +66,9 @@ work, but I think this would allow me to focus better on the task at hand.
 Before I started working on an open source project, it seemed really daunting to
 contribute to one. I'm not sure what's causing this, maybe it's stories about
 traditional open source projects' core developers posting rants or aggressively
-rejecting contributions. However it turns out the open source community is very
+rejecting contributions.
+
+However it turns out the open source community is very
 welcoming and helpful, not only when you post an issue, but also when you want
 to contribute as well. Explaining rationale, slowing down the pace to match
 contributor's is very helpful and encourages to contribute to the project itself.
