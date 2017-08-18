@@ -47,9 +47,6 @@ This information allows to build the project bottom-up, starting from the
 dependencies, and guarantees that after doing so, all required dependencies will
 be built for the packages in the project.
 
-### Examples?
-
-
 ###### Footnotes
 Exact `cargo metadata` JSON schema is defined over at [doc.crates.io](http://doc.crates.io/external-tools.html#information-about-project-structure).
 
