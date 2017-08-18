@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Taking a closer look at Cargo metadata
-category: draft
+category: GSoC
 ---
 In this blog post I'm going to describe the Cargo metadata format and how it's
 used to build a project.
