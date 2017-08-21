@@ -4,7 +4,7 @@ title: Wrapping up work on the RLS for GSoC
 category: draft
 ---
 ## Work summary
-It's time to wrap up the work done on the RLS for this year's edition of Google
+It's time to wrap up the work done on the [Rust Language Server](https://github.com/rust-lang-nursery/rls) (RLS) for this year's edition of Google
 Summer of Code. Time surely flew fast since the [first blog post](
 {% post_url 2017-07-06-working-on-rust-language-server-for-gsoc-2017 %})!
 
