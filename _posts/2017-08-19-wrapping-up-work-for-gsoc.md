@@ -48,19 +48,22 @@ Currently, the two first stages are completed, with the third stage still being 
 worked on.
 
 ### Difficulties
-One of the things I struggled the most with was giving correct estimates for the work
+One of the things I struggled the most with was prioritisation of the work
 I was tasked with. Even though the planned work was clearly defined, I tried to
 find a balance between doing the work on a bigger, planned feature and implementing
 smaller QoL changes or fixes that did ease/allow some people usage of the RLS.
-In the end it didn't go exactly as planned and I definitely see it as an area I
-need to improve in.
+In the end, I found myself frequently working on the side tasks longer than I
+should've, effectively delaying the main job I was tasked with in the first place.
 
 Having more freedom over one's work is both good and bad. There are no strict
 *dreadlines* looming over you, however it's easy to lose yourself if you don't
 organize your own work yourself. When working on some side projects I sometimes
 used organization tools such as Trello or good ol' Post-Its and in the end, I
 think I should've used it for this project. I managed to do most of the planned
-work, but I think this would allow me to focus better on the task at hand.
+work, but I think this would allow me to focus better on the task at hand and better
+prioritise the work.
+
+I very much feel like this is the area I need to improve on the most.
 
 ### Takeaways
 Before I started working on an open source project, it seemed really daunting to
@@ -68,16 +71,29 @@ contribute to one. I'm not sure what's causing this, maybe it's stories about
 traditional open source projects' core developers posting rants or aggressively
 rejecting contributions.
 
-However it turns out the open source community is very
-welcoming and helpful, not only when you post an issue, but also when you want
-to contribute as well. Explaining rationale, slowing down the pace to match
-contributor's is very helpful and encourages to contribute to the project itself.
-After all, the contributions are not only useful to yourself, but also to other
-people in general.
-
+However it turns out the open source community is very welcoming and helpful.
 I think I've been bitten by the OSS bug by now and definitely find myself
-contributing to other projects thanks to working on one during the Google Summer
-of Code.
+contributing also to other projects thanks to working on one during the Google
+Summer of Code.
+
+I also have to give a shout out to the Rust community specifically here. When posting
+issues, asking (sometimes silly) questions on the IRC or getting some required features
+in Cargo for the RLS, people were always open and helpful every step of the way.
+
+Speaking from a contributor's perspective, it means a lot when people take their
+time to slow down and thoroughly explain as to why and how certain things work
+the way they do, so I'm really grateful for that. It encourages further contribution
+and makes you feel even better when doing that! After all, the work is not only useful
+to yourself, but also to other people in general.
+
+I also learned quite a lot on how IDEs may be structured and how they interact with
+other tools/systems, most notably the compiler and a build system, to provide the desired
+functionality. Previously I treated it as a black box, where it performed some
+arcane compiler invocations and everything Just Worked&trade;. Now that I had the occasion
+to work on one, it helped demistify the way a compiler and an IDE may work, both in general
+and in tandem. It made me realize that a mere mortal such as myself can also work on it,
+since most of the time people tend to treat it like some mystical, arcane arts that only
+select people can work on.
 
 ### Closing words
 
