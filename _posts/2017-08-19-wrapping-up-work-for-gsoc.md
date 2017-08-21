@@ -3,6 +3,7 @@ layout: post
 title: Wrapping up work on the RLS for GSoC
 category: draft
 ---
+## Work summary
 It's time to wrap up the work done on the RLS for this year's edition of Google
 Summer of Code. Time surely flew fast since the [first blog post](
 {% post_url 2017-07-06-working-on-rust-language-server-for-gsoc-2017 %})!
@@ -47,6 +48,7 @@ modified files.
 Currently, the two first stages are completed, with the third stage still being actively
 worked on.
 
+## GSoC Experiences
 ### Difficulties
 One of the things I struggled the most with was prioritisation of the work
 I was tasked with. Even though the planned work was clearly defined, I tried to
@@ -91,24 +93,29 @@ other tools/systems, most notably the compiler and a build system, to provide th
 functionality. Previously I treated it as a black box, where it performed some
 arcane compiler invocations and everything Just Worked&trade;. Now that I had the occasion
 to work on one, it helped demistify the way a compiler and an IDE may work, both in general
-and in tandem. It made me realize that a mere mortal such as myself can also work on it,
-since most of the time people tend to treat it like some mystical, arcane arts that only
-select people can work on.
+and in tandem. As it turns out, IDEs are not as complex as I thought and working on them
+was really interesting and accessible at the same time.
 
 ### Closing words
 
-It's easy to doubt yourself, whether one should even apply for GSoC because of
-seeming lack of skill or whatever. However, one thing to keep in mind is that
-the GSoC isn't some internship at a sweatshop, where you have to churn out code
-as fast as possible to meet some impossible deadlines. Primarily, it's a valuable
-opportunity with the focus on learning.
-It shifts the way one thinks about the open source movement/projects and it helps
-to grow as a programmer, both in terms of skill and communication required to do
-the job.
+Google Summer of Code turned out to be a wonderful experience. It changed the way I think
+about the open source movement and it opened it up for me somehow. Professionally, it also helped me
+grow as a programmer, both in terms of skill and communication required to do the job.
 
-I wholeheartedly recommend it and if there's a single thing I regret is that
-I didn't do it sooner. If you find yourself thinking whether should you apply - **do it**!
-You'll love every second of it.
+Furthermore, it helped me connect to
+and work with a lot of creative, capable people that are smarter than me.
+Here, I'd like to especially give
+a shout out to [@nrc](https://github.com/nrc), Nick Cameron, who was a great mentor during this project
+ perfectly guided me through it and managed to put up with me! :smile:
+
+If you may be thinking whether to apply for the next year's edition of Google Summer of
+Code 2018, **do it**! I can wholeheartedly recommend it.
+
+The GSoC project may be coming to an end, but there's so much more that can be done for the RLS
+and Rust in general! Working on it is a joy and I'm probably here to stay. See you over at the [RLS repo](https://github.com/rust-lang-nursery/rls)
+and related, stay tuned! :sunglasses:
+<br>
+<br> <!-- I'm so, so sorry webdevs. -->
 
 ### Most notable PRs
 ###### Supporting multiple packages and targets
