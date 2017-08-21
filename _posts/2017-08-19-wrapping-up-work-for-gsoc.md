@@ -105,7 +105,7 @@ grow as a programmer, both in terms of skill and communication required to do th
 Furthermore, it helped me connect to
 and work with a lot of creative, capable people that are smarter than me.
 Here, I'd like to especially give
-a shout out to [@nrc](https://github.com/nrc), Nick Cameron, who was a great mentor during this project
+a shout out to [@nrc](https://github.com/nrc), Nick Cameron, who was a great mentor during this project,
  perfectly guided me through it and managed to put up with me! :smile:
 
 If you may be thinking whether to apply for the next year's edition of Google Summer of
