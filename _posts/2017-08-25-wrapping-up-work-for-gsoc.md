@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Wrapping up work on the RLS for GSoC
-category: draft
+category: GSoC
 ---
 ## Work summary
 It's time to wrap up the work done on the [Rust Language Server](https://github.com/rust-lang-nursery/rls) (RLS) for this year's edition of Google
@@ -15,12 +15,17 @@ multiple package targets and packages in general, including Cargo workspaces.
 Another one, a stretch goal of sorts, was to implement previewing macro expansion
 in the editor, however, in the end, there was not enough time to pursue that.
 
-At the time of writing, 2 out of 3 stages of workspace support has been implemented,
-I managed to land [27 PRs](#most-notable-prs), push
-46 commits (<span style="color:green">+2,637</span> insertions and
-<span style="color:red">-1,139</span> deletions) in total.
+At the time of writing, the workspace support has been implemented (still requires
+more polishing), I managed to land [30 PRs](#most-notable-prs) for the RLS, push
+50 commits (<span style="color:green">+2,837</span> insertions and
+<span style="color:red">-1,301</span> deletions) in total.
 
-### Work done for multiple packages and package targets
+Additionally, my talk regarding the RLS and my work on it has been accepted for
+[RustFest Zürich 2017](http://zurich.rustfest.eu/)! It's titled
+"Teaching an IDE to understand Rust" and I'm looking forward to present it on
+September 30th!
+
+### Work done for multiple packages and workspaces
 For supporting multiple crate targets, one of the most useful implemented features
 is ability to specify which target (`[lib]` or which `[[bin]]`) should be analyzed
 by the RLS, as well as supporting analyzing bin targets that require the lib from
@@ -45,8 +50,10 @@ was to create and store a dependency graph of units of work (compiler calls), wh
 would allow to improve the latency of the analysis and provide support for in-memory
 modified files.
 
-Currently, the two first stages are completed, with the third stage still being actively
-worked on.
+As of now, all three stages are completed. The last one is still being polished - 
+a concrete area of improvement is the accuracy of determination which changed files
+require a rebuild of which packages, as well as reliability of gathering provided
+analysis for multiple packages.
 
 ## GSoC Experiences
 ### Difficulties
@@ -119,25 +126,35 @@ and related, stay tuned! :sunglasses:
 
 ### Most notable PRs
 ###### Supporting multiple packages and targets
-* [(#373) Support analyzing a specific binary in project](https://github.com/rust-lang-nursery/rls/pulls/373)
-* [(#363) Support projects with both bin and lib crate types](https://github.com/rust-lang-nursery/rls/pulls/363)
-* [(#409) Workspaces](https://github.com/rust-lang-nursery/rls/pulls/409)
-* [(#424) Use linked compiler during Cargo `exec()` callback](https://github.com/rust-lang-nursery/rls/pulls/424)
-* [(#438) Infer appropriate crate target from workspace](https://github.com/rust-lang-nursery/rls/pulls/438)
-* [(#441) Create simple dep-graph from Cargo metadata](https://github.com/rust-lang-nursery/rls/pulls/441)
+* [(#373) Support analyzing a specific binary in project](https://github.com/rust-lang-nursery/rls/pull/373)
+* [(#363) Support projects with both bin and lib crate types](https://github.com/rust-lang-nursery/rls/pull/363)
+* [(#409) Workspaces](https://github.com/rust-lang-nursery/rls/pull/409)
+* [(#424) Use linked compiler during Cargo `exec()` callback](https://github.com/rust-lang-nursery/rls/pull/424)
+* [(#438) Infer appropriate crate target from workspace](https://github.com/rust-lang-nursery/rls/pull/438)
+* [(#441) Create simple dep-graph from Cargo metadata](https://github.com/rust-lang-nursery/rls/pull/441)
+* [(#449) Create and cache inter-target dep graph during Cargo build routine](https://github.com/rust-lang-nursery/rls/pull/449)
+* [(#453) Cache processes to execute for the workspace inter-target dep graph](https://github.com/rust-lang-nursery/rls/pull/453)
+* [(#462) Use cached build plan mostly instead of Cargo to schedule a multi-target build](https://github.com/rust-lang-nursery/rls/pull/462)
 
 ###### Smaller features and bugfixes
-* [(#237) Provide CompletionItem.kind for Racer completions](https://github.com/rust-lang-nursery/rls/pulls/237)
-* [(#337) Set missing env vars from Cargo in a compilation step](https://github.com/rust-lang-nursery/rls/pulls/337)
-* [(#349) Prevent aggressive project rebuilding by retaining RUSTFLAGS order](https://github.com/rust-lang-nursery/rls/pulls/349)
-* [(#420) Opt-out of build after `initialize`](https://github.com/rust-lang-nursery/rls/pulls/420)
-* [(#430) Ignore invalid file URI scheme in parse\_file\_path et al.](https://github.com/rust-lang-nursery/rls/pulls/430)
-* [(#432) Don't ignore incomplete server config, use default values if needed](https://github.com/rust-lang-nursery/rls/pulls/432)
+* [(#237) Provide CompletionItem.kind for Racer completions](https://github.com/rust-lang-nursery/rls/pull/237)
+* [(#337) Set missing env vars from Cargo in a compilation step](https://github.com/rust-lang-nursery/rls/pull/337)
+* [(#349) Prevent aggressive project rebuilding by retaining RUSTFLAGS order](https://github.com/rust-lang-nursery/rls/pull/349)
+* [(#420) Opt-out of build after `initialize`](https://github.com/rust-lang-nursery/rls/pull/420)
+* [(#430) Ignore invalid file URI scheme in parse\_file\_path et al.](https://github.com/rust-lang-nursery/rls/pull/430)
+* [(#432) Don't ignore incomplete server config, use default values if needed](https://github.com/rust-lang-nursery/rls/pull/432)
 
 ###### Refactoring / project organization
-* [(#231) Stubbed out separate simple test projects for tests](https://github.com/rust-lang-nursery/rls/pulls/231)
-* [(#256) LsService::handle\_message match replaced with macro](https://github.com/rust-lang-nursery/rls/pulls/256)
-* [(#323) Use ServerMessages in tests](https://github.com/rust-lang-nursery/rls/pulls/323)
-* [(#402) Use jsonrpc-core data for improved and more consistent error handling flow](https://github.com/rust-lang-nursery/rls/pulls/402)
+* [(#231) Stubbed out separate simple test projects for tests](https://github.com/rust-lang-nursery/rls/pull/231)
+* [(#256) LsService::handle\_message match replaced with macro](https://github.com/rust-lang-nursery/rls/pull/256)
+* [(#323) Use ServerMessages in tests](https://github.com/rust-lang-nursery/rls/pull/323)
+* [(#402) Use jsonrpc-core data for improved and more consistent error handling flow](https://github.com/rust-lang-nursery/rls/pull/402)
 * Miscellaneous, e.g. updating READMEs or project CI
+
+###### rust-lang-nursery/rls-vscode
+ * [Various PRs for the RLS Visual Studio Code extension](https://github.com/rust-lang-nursery/rls-vscode/pulls?&q=is%3Apr%20is%3Aclosed%20author%3AXanewok)
+
+###### rust-lang/cargo
+* [(#4416) Expose `Target` and `Unit` params to appropriate `Executor` callbacks](https://github.com/rust-lang/cargo/pull/4416)
+* [(#4424) Add `fn args_replace` and `fn get_program` to `ProcessBuilder`](https://github.com/rust-lang/cargo/pull/4424)
 
